@@ -1,0 +1,20 @@
+def order(n):
+    if n == 0:
+        return 0
+    return 1 + order(n // 10)
+
+def is_armstrong(n):
+    order_num = order(n)
+    
+    def armstrong_recursive(n, order_num):
+        if n == 0:
+            return 0
+        return ((n % 10) ** order_num) + armstrong_recursive(n // 10, order_num)
+    
+    return n == armstrong_recursive(n, order_num)
+
+number = 153  # Example number to check
+if is_armstrong(number):
+    print(f"{number} is an Armstrong number.")
+else:
+    print(f"{number} is not an Armstrong number.")
